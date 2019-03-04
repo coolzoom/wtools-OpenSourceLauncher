@@ -10,7 +10,7 @@ function getSettings(){
 	
 	$settings = Array(
 		'f_url'			=> $website_url,
-		'server_link'	=> 'http://rp-welten.net/server?id=' . $rpw_id,
+		'server_link'	=> 'http://localhost/server?id=' . $rpw_id,
 		'color'			=> explode("|", $color_hash),
 	);
 	return $settings;

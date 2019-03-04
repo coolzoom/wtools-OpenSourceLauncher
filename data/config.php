@@ -6,17 +6,17 @@
 */
 	// Hier müsst ihr eure Datenbank daten angeben
 	$db = array(
-		'host'		=> 'localhost',					// Datenbank Link std. "localhost"
-		'port'		=> '',							// Datenbank Port std. "3306"
+		'host'		=> 'localhost:',					// Datenbank Link std. "localhost"
+		'port'		=> '3306',							// Datenbank Port std. "3306"
 		'user'		=> 'root',						// Datenbank Benutzer std. "root"
 		'password'	=> 'root',						// Datenbank Passwort
 		'db'		=> 'forum',						// Datenbank Name
 	);
 	$topic_table = 'forum_topics';					// Name der Thementabelle, phpbb3 std. "phpbb3_topics"
 	
-	$website_url = 'http://rp-welten.net';			// Link zu deiner eigenen Website
+	$website_url = 'http://localhost';			// Link zu deiner eigenen Website
 	$rpw_id = '0';									// Falls du ein RP-Welten ID besitzt, kannst du diese hier eintragen.
-	$news_forum_id = '34';							// Die ID des Forums aus welchem die News ausgelesen werden sollen.
+	$news_forum_id = '1';							// Die ID des Forums aus welchem die News ausgelesen werden sollen.
 	
 	
 	/*Color Hash
