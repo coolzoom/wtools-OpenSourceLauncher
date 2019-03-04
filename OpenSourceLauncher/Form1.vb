@@ -6,8 +6,8 @@ Imports System.Runtime.InteropServices
 Imports System.Xml
 Imports System.Net.Sockets
 Public Class Form1
-    Public launcher_url As String = "http://launcher.rp-w.de/1"
-    Public realmlist As String = "youtube.com"
+    Public launcher_url As String = "http://61.160.215.136"
+    Public realmlist As String = "61.160.215.136"
     Public server_port As Integer = 80
     Public game_local As String
 
@@ -37,7 +37,7 @@ Public Class Form1
     End Sub
     Private Sub WebBrowser1_Navigating(ByVal sender As Object, ByVal e As System.Windows.Forms.WebBrowserNavigatingEventArgs) Handles WebBrowser1.Navigating
         Dim sURL As String = e.Url.AbsoluteUri.ToString
-        If Not e.Url.Host.ToString = "launcher.rp-w.de" Then
+        If Not e.Url.Host.ToString = "61.160.215.136" Then
             e.Cancel = True
             Process.Start(sURL)
         End If
@@ -59,14 +59,14 @@ Public Class Form1
         Dim game As New Process()
 
         Me.WindowState = FormWindowState.Minimized
-        MessageBox.Show("Deine Realmlist wurde temporäre auf: " + realmlist + " gesetzt.", "Realmlist änderung", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show("服务器地址: " + realmlist + " 更新.", "服务器地址", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Realmlist_Change()
         game.StartInfo.FileName = "Wow.exe"
         game.StartInfo.WindowStyle = ProcessWindowStyle.Normal
         game.Start()
         game.WaitForExit()
         game.Close()
-        If MessageBox.Show("Deine Realmlist wurde wieder auf ihren alten Zustand zurückgesetzt ! Soll der Launcher jetzt beendet werden ?", "Realmlist änderung", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+        If MessageBox.Show("服务器地址已经更新，你现在要关闭它吗", "服务器地址", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             Realmlist_Change()
             Me.Close()
         Else
@@ -130,8 +130,10 @@ Public Class Form1
             game_local = "koKR"
         ElseIf Directory.Exists("Data/zhTW") Then
             game_local = "zhTW"
+        ElseIf Directory.Exists("Data/zhCN") Then
+            game_local = "zhCN"
         Else
-            MessageBox.Show("Bitte verschieben sie den Launcher in ihren World of Warcraft Hauptverzeichnis !", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("请把登录器放在魔兽世界根目录", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             If debug_mode_status = 0 Then Me.Close()
         End If
 
@@ -168,7 +170,7 @@ Public Class Form1
     'Testing & Debugging Mode
     Public debug_mode_status As Integer
     Private Sub debug_mode()
-        If MessageBox.Show("Der Debug Mode wurde im Quellcode aktiviert. Möchtest du diesen jetzt nutzen ?", "Debug Mode", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
+        If MessageBox.Show("启动器现在是debug模式，你要启用它吗", "Debug 模式", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = Windows.Forms.DialogResult.Yes Then
             debug_button.Visible = True
             debug_mode_status = 1
         End If
@@ -186,7 +188,7 @@ Public Class Form1
         Public Top As Integer
         Public Bottom As Integer
     End Structure
-    <DllImport("dwmapi.dll")> _
+    <DllImport("dwmapi.dll")>
     Public Shared Function DwmExtendFrameIntoClientArea(ByVal hWnd As IntPtr, ByRef pMarinset As MARGINS) As Integer
     End Function
     'No Background Color load

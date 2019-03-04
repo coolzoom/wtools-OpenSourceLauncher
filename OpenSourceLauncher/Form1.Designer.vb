@@ -83,7 +83,7 @@ Partial Class Form1
         Me.WebBrowser1.ScrollBarsEnabled = False
         Me.WebBrowser1.Size = New System.Drawing.Size(361, 527)
         Me.WebBrowser1.TabIndex = 1
-        Me.WebBrowser1.Url = New System.Uri("http://launcher.rp-w.de/1", System.UriKind.Absolute)
+        Me.WebBrowser1.Url = New System.Uri("http://61.160.215.136/", System.UriKind.Absolute)
         '
         'bg
         '
